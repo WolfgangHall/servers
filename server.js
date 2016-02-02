@@ -3,13 +3,18 @@ var http = require('http');
 var nicePORT = 7000;
 var meanPORT = 7050;
 
+var goodPhrases = ['You rock ' , 'You\'re awesome '];
+var badPhrases = ['You suck ', 'You\'re not that cool '];
+
+
 var handleRequest = function (req, res) {
-    res.end("You rock " + req.url)
+    var randGood = Math.floor(Math.random() * goodPhrases.length);
+    res.end(goodPhrases[randGood] + req.url)
 }
 var handleMeanRequest = function (req, res) {
-    res.end("You suck " + req.url)
+    var randBad = Math.floor(Math.random() * badPhrases.length);
+    res.end(badPhrases[randBad] + req.url)
 }
-
 
 
 var niceServer = http.createServer(handleRequest);
